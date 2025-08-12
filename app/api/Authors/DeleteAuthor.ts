@@ -3,22 +3,16 @@ import type { Data } from "../../models/Data";
 import { ParseResponseAsync } from "../../utils/ParseResponse";
 import { isSuccessful } from "../../models/Data";
 
-export async function registerUserAsync(
-	name: string, 
-	email: string, 
-	password: string): Promise<boolean> {
+export async function deleteAuthorApiAsync(
+	token: string, id: string): Promise<boolean> {
 	try {
-		const response = await fetch(`${backendUrl}/register`, {
-			method: 'POST',
+		const response = await fetch(`${backendUrl}/authors/${id}`, {
+			method: 'Delete',
 			headers: {
+				Authorization: token,
 				'Content-Type': 'application/json',
 				accept: '*/*',
 			},
-			body: JSON.stringify({
-				name,
-				email,
-				password,
-			}),
 		});
 		const data = await ParseResponseAsync<Data<string>>(response);
 		return response.ok && isSuccessful(data);

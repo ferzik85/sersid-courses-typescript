@@ -5,3 +5,7 @@ export interface Data<T> {
   user: User;
   result: T;
 }
+
+export function isSuccessful<T>(d: Data<T> | null | undefined): d is Data<T> {
+  return d?.successful === true;
+}

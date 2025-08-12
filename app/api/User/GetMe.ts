@@ -1,6 +1,8 @@
 import { backendUrl } from "../../const/AppConsts";
 import type { User } from "../../models/User";
 import type { Data } from "../../models/Data";
+import { isSuccessful } from "../../models/Data";
+import { ParseResponseAsync } from "../../utils/ParseResponse";
 
 export interface GetMeResult {
   ok: boolean;
@@ -24,7 +26,7 @@ export async function getMeAsync(token: string | null): Promise<GetMeResult> {
       },
     });
     const data = await ParseResponseAsync<Data<User>>(response);
-    const ok = response.ok && (data?.successful ?? false);
+    const ok = response.ok && isSuccessful(data);
     if (ok) {
       return {
         ok: true,
@@ -37,10 +39,4 @@ export async function getMeAsync(token: string | null): Promise<GetMeResult> {
   return falseGetMeResult;
 }
 
-async function ParseResponseAsync<T>(response: Response): Promise<T | null> {
-  try {
-    return (await response.json()) as T;
-  } catch {
-    return null;
-  }
-}
+
