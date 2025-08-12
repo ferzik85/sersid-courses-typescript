@@ -12,7 +12,7 @@ export interface GetAuthorsResult {
 export async function getAuthorsApiAsync(): Promise<GetAuthorsResult> {
 	try {
 		const response = await fetch(`${backendUrl}/authors/all`, {
-			method: 'Get',
+			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				accept: '*/*',
@@ -23,7 +23,7 @@ export async function getAuthorsApiAsync(): Promise<GetAuthorsResult> {
 
 		return {
 			ok,
-			authors: ok ? data.result : [],
+			authors: ok ? data.result ?? [] : [],
 		};
 	} catch (error) {
 		// ignore

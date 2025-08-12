@@ -1,18 +1,28 @@
 import { backendUrl } from '../../const/AppConsts';
+import { ParseResponseAsync } from "../../utils/ParseResponse";
+import { isSuccessful } from "../../models/Data";
+import type { Course } from "../../models/Course";
+import type { Data } from "../../models/Data";
 
-export async function getCoursesApiAsync() {
+export interface GetCoursesResult {
+  ok: boolean;
+  courses: Course[];
+}
+
+export async function getCoursesApiAsync(): Promise<GetCoursesResult> {
 	try {
 		const response = await fetch(`${backendUrl}/courses/all`, {
-			method: 'Get',
+			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				accept: '*/*',
-			},
+				accept: '*/*'
+			}
 		});
-		const data = await response.json();
+		const data = await ParseResponseAsync<Data<Course[]>>(response);
+		const ok = response.ok && isSuccessful(data);
 		return {
-			ok: response.ok && data.successful,
-			courses: data.result ?? [],
+			ok,
+			courses: ok ? data.result ?? []: []
 		};
 	} catch (error) {
 		// ignore

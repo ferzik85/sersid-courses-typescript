@@ -4,7 +4,7 @@ export async function logoutUserAsync(token: string | null): Promise<boolean> {
 	if (!token) return false;
 	try {
 		const response = await fetch(`${backendUrl}/logout`, {
-			method: 'Delete',
+			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
 				accept: '*/*',

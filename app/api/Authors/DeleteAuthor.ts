@@ -7,7 +7,7 @@ export async function deleteAuthorApiAsync(
 	token: string, id: string): Promise<boolean> {
 	try {
 		const response = await fetch(`${backendUrl}/authors/${id}`, {
-			method: 'Delete',
+			method: 'DELETE',
 			headers: {
 				Authorization: token,
 				'Content-Type': 'application/json',

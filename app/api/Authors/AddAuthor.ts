@@ -14,7 +14,7 @@ export async function addAuthorApiAsync(
 	author: Author): Promise<AddAuthorResult> {
 	try {
 		const response = await fetch(`${backendUrl}/authors/add`, {
-			method: 'Post',
+			method: 'POST',
 			headers: {
 				Authorization: token,
 				'Content-Type': 'application/json',
