@@ -1,4 +1,4 @@
-function formatAuthors(authors) {
+function formatAuthors(authors: string[] | null): string {
 	return authors?.join(', ') ?? '';
 }
 

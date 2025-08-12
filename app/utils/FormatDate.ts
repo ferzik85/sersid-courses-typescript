@@ -1,4 +1,4 @@
-function formatDate(date) {
+function formatDate(date: string | null): string {
 	return date?.replaceAll('/', '.') ?? '';
 }
 
