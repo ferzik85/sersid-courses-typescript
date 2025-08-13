@@ -11,7 +11,7 @@ export interface AddAuthorResult {
 
 export async function addAuthorApiAsync(
 	token: string, 
-	author: Author): Promise<AddAuthorResult> {
+	author: string): Promise<AddAuthorResult> {
 	try {
 		const response = await fetch(`${backendUrl}/authors/add`, {
 			method: 'POST',

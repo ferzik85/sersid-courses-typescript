@@ -33,8 +33,8 @@ export function getUserName(): string | null {
   return getUser()?.name ?? null;
 }
 
-export function getUserToken(): string | null {
-  return getUser()?.token ?? null;
+export function getUserToken(): string {
+  return getUser()?.token ?? '';
 }
 
 export function getUserRole(): string | null {
