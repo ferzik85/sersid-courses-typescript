@@ -1,13 +1,6 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "react-router";
-
+import { isRouteErrorResponse, Scripts, ScrollRestoration} from "react-router";
 import type { Route } from "./+types/root";
+import "./root.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,20 +8,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="Web site created using create-react-app" />
+        <title>Courses App</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet"></link>
       </head>
       <body>
-        {children}
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

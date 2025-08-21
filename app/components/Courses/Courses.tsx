@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import CourseCard from './components/CourseCard/CourseCard';
 import Button from '../../common/Button/Button';
 import SearchBar from './components/SearchBar/SearchBar';

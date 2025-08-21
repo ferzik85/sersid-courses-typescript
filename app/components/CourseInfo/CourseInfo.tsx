@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router';
 import Button from '../../common/Button/Button';
 import Duration from '../../common/Duration/Duration';
 import formatDate from '../../utils/FormatDate';

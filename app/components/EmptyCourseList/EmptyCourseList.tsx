@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useSelector } from 'react-redux';
 import { isAdmin } from '../../store/user/selectors';
 import Button from '../../common/Button/Button';
