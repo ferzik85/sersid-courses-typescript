@@ -1,4 +1,4 @@
-function validateDuration(str: string): boolean {
+function validateDuration(str: string | number): boolean {
 	const num = Number(str);
 	return Number.isFinite(num) && num > 0;
 }

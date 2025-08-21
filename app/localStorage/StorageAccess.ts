@@ -2,18 +2,18 @@ import type { User } from "../models/User";
 
 const activeUserKey = "activeUser";
 
-function safeParse(json: string): User | null {
+function safeParse(json: string): User {
   try {
     const user = JSON.parse(json);
-    return user && typeof user === "object" ? (user as User) : null;
+    return user && typeof user === "object" ? (user as User) : {} as User;
   } catch {
-    return null;
+    return {} as User;
   }
 }
 
-export function getUser(): User | null {
+export function getUser(): User {
   const user = localStorage.getItem(activeUserKey);
-  return user ? safeParse(user) : null;
+  return safeParse(user!);
 }
 
 export function removeActiveUserFromLocalStorage(): void {

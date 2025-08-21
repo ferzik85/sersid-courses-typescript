@@ -7,7 +7,7 @@ import validateDuration from '../../utils/ValidateDuration';
 
 export interface DurationInputProps {
   name: string;
-  duration: string;
+  duration: any;
   onChange: (value: string) => void;
   isInvalid: boolean;
   inputClassName?: string | null;

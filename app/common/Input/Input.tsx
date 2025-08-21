@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import styles from './Input.module.css';
 
 export interface InputProps {
-  value?: string;
+  value?: any;
   onChange?: (value: string) => void;
   className?: string | null;
 }
